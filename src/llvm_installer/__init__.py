@@ -10,6 +10,7 @@
 # or implied. See the License for the specific language governing permissions and limitations
 # under the License.
 
+from functools import total_ordering
 import sys_detection
 import re
 import logging
@@ -71,6 +72,7 @@ TAG_RE_STR = ''.join([
 TAG_RE = re.compile(TAG_RE_STR)
 
 
+@total_ordering
 class ParsedTag:
     tag: str
 
@@ -153,7 +155,6 @@ class LlvmPackageCollection:
 
 
 class LlvmInstaller:
-    major_llvm_version: int
     architecture: str
     short_os_name_and_version: str
     github_release_url_prefix: str
@@ -162,14 +163,12 @@ class LlvmInstaller:
 
     def __init__(
             self,
-            major_llvm_version: int,
             short_os_name_and_version: Optional[str] = None,
             architecture: Optional[str] = None,
             github_release_url_prefix: Optional[str] = None,
             package_name_prefix: Optional[str] = None,
             package_name_suffix: Optional[str] = None) -> None:
 
-        self.major_llvm_version = major_llvm_version
         self.short_os_name_and_version = (
             short_os_name_and_version or local_sys_conf().short_os_name_and_version()
         )
@@ -194,10 +193,10 @@ class LlvmInstaller:
             self.package_name_suffix
         ])
 
-    def get_llvm_package(self) -> ParsedTag:
+    def get_llvm_package(self, major_llvm_version: int) -> ParsedTag:
         packages = LlvmPackageCollection.get_instance()
         filtered_packages: LlvmPackageCollection = packages.filter(
-            major_llvm_version=self.major_llvm_version,
+            major_llvm_version=major_llvm_version,
             short_os_name_and_version=self.short_os_name_and_version,
             architecture=self.architecture)
         selection_criteria_str = ", ".join([
