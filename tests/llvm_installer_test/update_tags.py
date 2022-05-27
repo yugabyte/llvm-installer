@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Copyright (c) Yugabyte, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -14,7 +16,7 @@ import os
 import logging
 import json
 
-from llvm_installer import LlvmInstaller
+from llvm_installer import LlvmInstaller, ParsedTag, TagParsingError
 
 from github import Github, GithubException
 from github.GitRelease import GitRelease
@@ -25,6 +27,13 @@ def main() -> None:
     repo = github_client.get_repo('yugabyte/build-clang')
     installer = LlvmInstaller()
     valid_tags = []
+    output_dir = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+        'src', 'llvm_installer')
+    if not os.path.isdir(output_dir):
+        raise IOError(f"Output directory does not exist: {output_dir}")
+    output_path = os.path.join(output_dir, 'release_tags.json')
+
     for release in repo.get_releases():
 
         tag_name = release.tag_name
@@ -35,12 +44,28 @@ def main() -> None:
             download_urls.append(asset.browser_download_url)
         if url_for_tag in download_urls and url_for_tag + '.sha256' in download_urls:
             logging.info("Found release: %s", url_for_tag)
-            valid_tags.append(tag_name)
+            try:
+                parsed_tag = ParsedTag.from_tag(tag_name)
+            except TagParsingError as ex:
+                logging.warning("Skipping tag due to error: %s", ex)
+                continue
+
+            if parsed_tag.major_version <= 12:
+                logging.warning("Skipping an old release version: %s", parsed_tag)
+                continue
+
+            logging.info("Tag: %s", parsed_tag)
+            valid_tags.append(parsed_tag)
         else:
             logging.info(
                 "Skipping release: %s with tag %s (expected release URLs not found)",
                 release, tag_name)
+    valid_tags.sort(key=lambda parsed_tag: parsed_tag.get_sort_key())
+    json_data = {"parsed_tags": [valid_tag.as_dict() for valid_tag in valid_tags]}
 
+    with open(output_path, 'w') as output_file:
+        output_file.write(json.dumps(json_data, sort_keys=True, indent=2) + '\n')
+    logging.info(f"Wrote {len(valid_tags)} releases to file: {output_path}")
 
 if __name__ == '__main__':
     logging.basicConfig(

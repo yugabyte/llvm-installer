@@ -34,3 +34,6 @@ $(VENV_NAME)/bin/activate: setup.py
 
 clean:
 	rm -rf venv src/llvm_installer/__pycache__ dist/*
+
+update_tags: venv
+	$(VENV_PYTHON) tests/llvm_installer_test/update_tags.py

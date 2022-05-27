@@ -1,0 +1,204 @@
+{
+  "parsed_tags": [
+    {
+      "architecture": "aarch64",
+      "major_version": 13,
+      "sha1_prefix": "191e3a05",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v13.0.1-yb-1-1648394512-191e3a05-almalinux8-aarch64",
+      "timestamp": "1648394512",
+      "version": "13.0.1",
+      "version_suffix": "yb-1"
+    },
+    {
+      "architecture": "x86_64",
+      "major_version": 13,
+      "sha1_prefix": "191e3a05",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v13.0.1-yb-1-1644390288-191e3a05-almalinux8-x86_64",
+      "timestamp": "1644390288",
+      "version": "13.0.1",
+      "version_suffix": "yb-1"
+    },
+    {
+      "architecture": "x86_64",
+      "major_version": 13,
+      "sha1_prefix": "191e3a05",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v13.0.1-yb-1-1651811300-191e3a05-almalinux8-x86_64",
+      "timestamp": "1651811300",
+      "version": "13.0.1",
+      "version_suffix": "yb-1"
+    },
+    {
+      "architecture": "aarch64",
+      "major_version": 13,
+      "sha1_prefix": "191e3a05",
+      "short_os_name_and_version": "amzn2",
+      "tag": "v13.0.1-yb-1-1647678956-191e3a05-amzn2-aarch64",
+      "timestamp": "1647678956",
+      "version": "13.0.1",
+      "version_suffix": "yb-1"
+    },
+    {
+      "architecture": "x86_64",
+      "major_version": 13,
+      "sha1_prefix": "191e3a05",
+      "short_os_name_and_version": "centos7",
+      "tag": "v13.0.1-yb-1-1644383736-191e3a05-centos7-x86_64",
+      "timestamp": "1644383736",
+      "version": "13.0.1",
+      "version_suffix": "yb-1"
+    },
+    {
+      "architecture": "x86_64",
+      "major_version": 13,
+      "sha1_prefix": "191e3a05",
+      "short_os_name_and_version": "centos7",
+      "tag": "v13.0.1-yb-1-1651813550-191e3a05-centos7-x86_64",
+      "timestamp": "1651813550",
+      "version": "13.0.1",
+      "version_suffix": "yb-1"
+    },
+    {
+      "architecture": "aarch64",
+      "major_version": 13,
+      "sha1_prefix": "4b60e646",
+      "short_os_name_and_version": "centos8",
+      "tag": "v13.0.0-yb-1-1639976983-4b60e646-centos8-aarch64",
+      "timestamp": "1639976983",
+      "version": "13.0.0",
+      "version_suffix": "yb-1"
+    },
+    {
+      "architecture": "aarch64",
+      "major_version": 13,
+      "sha1_prefix": "191e3a05",
+      "short_os_name_and_version": "ubuntu20.04",
+      "tag": "v13.0.1-yb-1-1653349120-191e3a05-ubuntu20.04-aarch64",
+      "timestamp": "1653349120",
+      "version": "13.0.1",
+      "version_suffix": "yb-1"
+    },
+    {
+      "architecture": "x86_64",
+      "major_version": 13,
+      "sha1_prefix": "191e3a05",
+      "short_os_name_and_version": "ubuntu20.04",
+      "tag": "v13.0.1-yb-1-1651706387-191e3a05-ubuntu20.04-x86_64",
+      "timestamp": "1651706387",
+      "version": "13.0.1",
+      "version_suffix": "yb-1"
+    },
+    {
+      "architecture": "x86_64",
+      "major_version": 13,
+      "sha1_prefix": "191e3a05",
+      "short_os_name_and_version": "ubuntu22.04",
+      "tag": "v13.0.1-yb-1-1651730352-191e3a05-ubuntu22.04-x86_64",
+      "timestamp": "1651730352",
+      "version": "13.0.1",
+      "version_suffix": "yb-1"
+    },
+    {
+      "architecture": "aarch64",
+      "major_version": 14,
+      "sha1_prefix": "329fda39",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v14.0.0-1648380033-329fda39-almalinux8-aarch64",
+      "timestamp": "1648380033",
+      "version": "14.0.0",
+      "version_suffix": null
+    },
+    {
+      "architecture": "x86_64",
+      "major_version": 14,
+      "sha1_prefix": "329fda39",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v14.0.0-1648363631-329fda39-almalinux8-x86_64",
+      "timestamp": "1648363631",
+      "version": "14.0.0",
+      "version_suffix": null
+    },
+    {
+      "architecture": "x86_64",
+      "major_version": 14,
+      "sha1_prefix": "1f914006",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v14.0.3-1651807922-1f914006-almalinux8-x86_64",
+      "timestamp": "1651807922",
+      "version": "14.0.3",
+      "version_suffix": null
+    },
+    {
+      "architecture": "aarch64",
+      "major_version": 14,
+      "sha1_prefix": "329fda39",
+      "short_os_name_and_version": "amzn2",
+      "tag": "v14.0.0-1648379878-329fda39-amzn2-aarch64",
+      "timestamp": "1648379878",
+      "version": "14.0.0",
+      "version_suffix": null
+    },
+    {
+      "architecture": "x86_64",
+      "major_version": 14,
+      "sha1_prefix": "329fda39",
+      "short_os_name_and_version": "centos7",
+      "tag": "v14.0.0-1648392050-329fda39-centos7-x86_64",
+      "timestamp": "1648392050",
+      "version": "14.0.0",
+      "version_suffix": null
+    },
+    {
+      "architecture": "x86_64",
+      "major_version": 14,
+      "sha1_prefix": "1f914006",
+      "short_os_name_and_version": "centos7",
+      "tag": "v14.0.3-1651810360-1f914006-centos7-x86_64",
+      "timestamp": "1651810360",
+      "version": "14.0.3",
+      "version_suffix": null
+    },
+    {
+      "architecture": "x86_64",
+      "major_version": 14,
+      "sha1_prefix": "1f914006",
+      "short_os_name_and_version": "macos",
+      "tag": "v14.0.3-1653463652-1f914006-macos-x86_64",
+      "timestamp": "1653463652",
+      "version": "14.0.3",
+      "version_suffix": null
+    },
+    {
+      "architecture": "aarch64",
+      "major_version": 14,
+      "sha1_prefix": "1f914006",
+      "short_os_name_and_version": "ubuntu20.04",
+      "tag": "v14.0.3-1653353545-1f914006-ubuntu20.04-aarch64",
+      "timestamp": "1653353545",
+      "version": "14.0.3",
+      "version_suffix": null
+    },
+    {
+      "architecture": "x86_64",
+      "major_version": 14,
+      "sha1_prefix": "1f914006",
+      "short_os_name_and_version": "ubuntu20.04",
+      "tag": "v14.0.3-1651708261-1f914006-ubuntu20.04-x86_64",
+      "timestamp": "1651708261",
+      "version": "14.0.3",
+      "version_suffix": null
+    },
+    {
+      "architecture": "x86_64",
+      "major_version": 14,
+      "sha1_prefix": "1f914006",
+      "short_os_name_and_version": "ubuntu22.04",
+      "tag": "v14.0.3-1651732108-1f914006-ubuntu22.04-x86_64",
+      "timestamp": "1651732108",
+      "version": "14.0.3",
+      "version_suffix": null
+    }
+  ]
+}

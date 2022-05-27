@@ -29,8 +29,7 @@ class LlvmInstallerTest(unittest.TestCase):
                     if short_os_name_and_version == 'centos7' and architecture == 'aarch64':
                         continue
                     installer = LlvmInstaller(
-                        major_llvm_version=major_llvm_version,
                         short_os_name_and_version=short_os_name_and_version,
                         architecture=architecture)
-                    llvm_url = installer.get_llvm_url()
+                    llvm_url = installer.get_llvm_url(major_llvm_version=major_llvm_version)
                     # TODO: try to download the URL.

@@ -10,7 +10,6 @@
 # or implied. See the License for the specific language governing permissions and limitations
 # under the License.
 
-from functools import total_ordering
 import sys_detection
 import re
 import logging
@@ -19,7 +18,7 @@ from packaging import version
 
 from sys_detection import SHORT_OS_NAME_REGEX_STR, is_compatible_os, local_sys_conf
 
-from typing import Optional, List, Union, Sequence
+from typing import Optional, List, Union, Sequence, Tuple, Dict
 
 
 ARCH_RE_STR = '|'.join(['x86_64', 'aarch64', 'arm64'])
@@ -69,39 +68,81 @@ TAG_RE_STR = ''.join([
     r'$'
 ])
 
+TAG_RE_GROUP_KEYS = re.findall(r'(?<=<)[a-z0-9_]+(?=>)', TAG_RE_STR)
+assert len(TAG_RE_GROUP_KEYS) == 6, "Expected to see 6 capture groups in regex " + TAG_RE_STR
+
 TAG_RE = re.compile(TAG_RE_STR)
 
 
-@total_ordering
+class TagParsingError(Exception):
+    def __init__(self, msg: str) -> None:
+        super(TagParsingError, self).__init__(msg)
+
+
 class ParsedTag:
     tag: str
 
     version: str
     version_suffix: Optional[str]
     timestamp: str
-    sha1: str
+    sha1_prefix: str
     short_os_name_and_version: str
     architecture: str
 
-    ATTR_NAMES = [
-        'version',
-        'version_suffix',
-        'timestamp',
-        'sha1_prefix',
-        'short_os_name_and_version',
-        'architecture',
-    ]
+    major_version: int
 
-    def __init__(self, tag: str) -> None:
-        self.tag = tag
+    ATTR_NAMES = TAG_RE_GROUP_KEYS + ['tag', 'major_version']
+
+    def __init__(self) -> None:
+        pass
+
+    def finish_init(self) -> None:
+        self.major_version = int(self.version.split('.')[0])
+        assert self.version is not None
+        assert self.timestamp is not None
+        assert self.sha1_prefix is not None
+        assert self.short_os_name_and_version is not None
+        assert self.architecture is not None
+
+    @staticmethod
+    def from_tag(tag: str) -> 'ParsedTag':
+        parsed_tag = ParsedTag()
+        parsed_tag.tag = tag
         m = TAG_RE.match(tag)
         if not m:
-            raise ValueError(
+            raise TagParsingError(
                 f"Cannot parse tag: {tag}. Does not match regular expression: {TAG_RE_STR}")
         for k, v in m.groupdict().items():
-            assert k in ParsedTag.ATTR_NAMES, \
-                f'Unexpected parsed tag group key: {k}, valid keys: {ParsedTag.ATTR_NAMES}'
-            setattr(self, k, v)
+            assert k in TAG_RE_GROUP_KEYS, \
+                f'Unexpected parsed tag group key: {k}, valid keys: {TAG_RE_GROUP_KEYS}'
+            setattr(parsed_tag, k, v)
+        parsed_tag.finish_init()
+        return parsed_tag
+
+    def get_sort_key(self) -> Tuple[Union[str, int], ...]:
+        return (
+            self.major_version,
+            self.short_os_name_and_version,
+            self.architecture,
+            self.timestamp,
+            self.sha1_prefix,
+            self.tag,
+            self.version_suffix or ''
+        )
+
+    def as_dict(self) -> Dict[str, Optional[str]]:
+        return {
+            key: getattr(self, key)
+            for key in ParsedTag.ATTR_NAMES
+        }
+
+    @staticmethod
+    def from_dict(d: Dict[str, Optional[str]]) -> 'ParsedTag':
+        parsed_tag = ParsedTag()
+        for attr_name in ParsedTag.ATTR_NAMES:
+            setattr(parsed_tag, attr_name, d.get(attr_name))
+        parsed_tag.finish_init()
+        return parsed_tag
 
     def __repr__(self) -> str:
         return 'ParsedTag(%s)' % ', '.join(
@@ -118,7 +159,7 @@ class LlvmPackageCollection:
 
     def __init__(self, tags: Sequence[Union[str, ParsedTag]]):
         self.parsed_tags = [
-            (tag if isinstance(tag, ParsedTag) else ParsedTag(tag))
+            (tag if isinstance(tag, ParsedTag) else ParsedTag.from_tag(tag))
             for tag in tags
         ]
 
@@ -193,14 +234,14 @@ class LlvmInstaller:
             self.package_name_suffix
         ])
 
-    def get_llvm_package(self, major_llvm_version: int) -> ParsedTag:
+    def get_parsed_tag(self, major_llvm_version: int) -> ParsedTag:
         packages = LlvmPackageCollection.get_instance()
         filtered_packages: LlvmPackageCollection = packages.filter(
             major_llvm_version=major_llvm_version,
             short_os_name_and_version=self.short_os_name_and_version,
             architecture=self.architecture)
         selection_criteria_str = ", ".join([
-            f"major LLVM version {self.major_llvm_version}",
+            f"major LLVM version {major_llvm_version}",
             f"OS/version {self.short_os_name_and_version}",
             f"architecture {self.architecture}",
         ])
@@ -216,5 +257,6 @@ class LlvmInstaller:
         raise ValueError(
             f"Multiple packages found for {selection_criteria_str}: {filtered_packages}")
 
-    def get_llvm_url(self) -> str:
-        return self.get_url_for_tag(self.get_llvm_package().tag)
+    def get_llvm_url(self, major_llvm_version: int) -> str:
+        return self.get_url_for_tag(self.get_parsed_tag(
+            major_llvm_version=major_llvm_version).tag)
