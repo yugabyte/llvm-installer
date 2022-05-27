@@ -17,6 +17,9 @@ VENV_NAME?=venv
 VENV_ACTIVATE=. $(VENV_NAME)/bin/activate
 VENV_PYTHON=$(VENV_NAME)/bin/python3
 
+codecheck_only: venv
+	$(VENV_PYTHON) -m codecheck --python-interpreter "$(VENV_PYTHON)"
+
 check: venv unittest
 	$(VENV_PYTHON) -m codecheck --python-interpreter "$(VENV_PYTHON)"
 

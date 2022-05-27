@@ -16,7 +16,7 @@ import os
 import logging
 import json
 
-from llvm_installer import LlvmInstaller, ParsedTag, TagParsingError
+from llvm_installer import LlvmInstaller, ParsedTag, TagParsingError, get_release_tags_file_path
 
 from github import Github, GithubException
 from github.GitRelease import GitRelease
@@ -27,12 +27,9 @@ def main() -> None:
     repo = github_client.get_repo('yugabyte/build-clang')
     installer = LlvmInstaller()
     valid_tags = []
-    output_dir = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-        'src', 'llvm_installer')
-    if not os.path.isdir(output_dir):
-        raise IOError(f"Output directory does not exist: {output_dir}")
-    output_path = os.path.join(output_dir, 'release_tags.json')
+    output_path = get_release_tags_file_path()
+    if not os.path.isdir(os.path.dirname(output_path)):
+        raise IOError(f"Directory of the output file {output_path} does not exist")
 
     for release in repo.get_releases():
 
@@ -50,8 +47,8 @@ def main() -> None:
                 logging.warning("Skipping tag due to error: %s", ex)
                 continue
 
-            if parsed_tag.major_version <= 12:
-                logging.warning("Skipping an old release version: %s", parsed_tag)
+            if parsed_tag.major_version < 12:
+                logging.warning("Skipping old release version: %s", parsed_tag)
                 continue
 
             logging.info("Tag: %s", parsed_tag)
@@ -66,6 +63,7 @@ def main() -> None:
     with open(output_path, 'w') as output_file:
         output_file.write(json.dumps(json_data, sort_keys=True, indent=2) + '\n')
     logging.info(f"Wrote {len(valid_tags)} releases to file: {output_path}")
+
 
 if __name__ == '__main__':
     logging.basicConfig(

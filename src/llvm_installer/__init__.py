@@ -10,9 +10,13 @@
 # or implied. See the License for the specific language governing permissions and limitations
 # under the License.
 
-import sys_detection
+import os
 import re
 import logging
+import json
+import sys
+
+import sys_detection
 
 from packaging import version
 
@@ -26,32 +30,6 @@ ARCH_RE_STR = '|'.join(['x86_64', 'aarch64', 'arm64'])
 DEFAULT_GITHUB_RELEASE_URL_PREFIX = 'https://github.com/yugabyte/build-clang/releases/download'
 DEFAULT_PACKAGE_NAME_PREFIX = 'yb-llvm-'
 DEFAULT_PACKAGE_NAME_SUFFIX = '.tar.gz'
-
-
-TAGS = [
-    'v11.1.0-yb-1-1633099975-130bd22e-centos7-x86_64',
-    'v11.1.0-yb-1-1633143292-130bd22e-almalinux8-x86_64',
-    'v11.1.0-yb-1-1633544021-130bd22e-centos8-aarch64',
-    'v11.1.0-yb-1-1647671171-130bd22e-amzn2-aarch64',
-    'v12.0.1-yb-1-1633099823-bdb147e6-centos7-x86_64',
-    'v12.0.1-yb-1-1633143152-bdb147e6-almalinux8-x86_64',
-    'v12.0.1-yb-1-1647674838-bdb147e6-amzn2-aarch64',
-    'v12.0.1-yb-1-1648458260-bdb147e6-almalinux8-aarch64',
-    'v12.0.1-yb-1-1651704621-bdb147e6-ubuntu20.04-x86_64',
-    'v12.0.1-yb-1-1651728697-bdb147e6-ubuntu22.04-x86_64',
-    'v13.0.0-yb-1-1639976983-4b60e646-centos8-aarch64',
-    'v13.0.1-yb-1-1644383736-191e3a05-centos7-x86_64',
-    'v13.0.1-yb-1-1644390288-191e3a05-almalinux8-x86_64',
-    'v13.0.1-yb-1-1647678956-191e3a05-amzn2-aarch64',
-    'v13.0.1-yb-1-1651706387-191e3a05-ubuntu20.04-x86_64',
-    'v13.0.1-yb-1-1651730352-191e3a05-ubuntu22.04-x86_64',
-    'v14.0.0-1648363631-329fda39-almalinux8-x86_64',
-    'v14.0.0-1648379878-329fda39-amzn2-aarch64',
-    'v14.0.0-1648380033-329fda39-almalinux8-aarch64',
-    'v14.0.0-1648392050-329fda39-centos7-x86_64',
-    'v14.0.3-1651708261-1f914006-ubuntu20.04-x86_64',
-    'v14.0.3-1651732108-1f914006-ubuntu22.04-x86_64',
-]
 
 TAG_RE_STR = ''.join([
     r'^',
@@ -74,6 +52,10 @@ assert len(TAG_RE_GROUP_KEYS) == 6, "Expected to see 6 capture groups in regex "
 TAG_RE = re.compile(TAG_RE_STR)
 
 
+def get_release_tags_file_path() -> str:
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), 'release_tags.json')
+
+
 class TagParsingError(Exception):
     def __init__(self, msg: str) -> None:
         super(TagParsingError, self).__init__(msg)
@@ -90,14 +72,25 @@ class ParsedTag:
     architecture: str
 
     major_version: int
+    minor_version: int
+    patch_version: int
+    yb_suffix_version: Optional[int]
 
-    ATTR_NAMES = TAG_RE_GROUP_KEYS + ['tag', 'major_version']
+    ATTR_NAMES = TAG_RE_GROUP_KEYS + [
+        'tag', 'major_version', 'minor_version', 'patch_version', 'yb_suffix_version']
 
     def __init__(self) -> None:
         pass
 
     def finish_init(self) -> None:
-        self.major_version = int(self.version.split('.')[0])
+        version_components = self.version.split('.')
+        self.major_version = int(version_components[0])
+        self.minor_version = int(version_components[1])
+        self.patch_version = int(version_components[2])
+        if self.version_suffix is not None and self.version_suffix.startswith('yb-'):
+            self.yb_suffix_version = int(self.version_suffix[3:])
+        else:
+            self.yb_suffix_version = None
         assert self.version is not None
         assert self.timestamp is not None
         assert self.sha1_prefix is not None
@@ -139,6 +132,7 @@ class ParsedTag:
     @staticmethod
     def from_dict(d: Dict[str, Optional[str]]) -> 'ParsedTag':
         parsed_tag = ParsedTag()
+        sys.stderr.write("Dict: %s, type(d)=%s\n" % (d, type(d)))
         for attr_name in ParsedTag.ATTR_NAMES:
             setattr(parsed_tag, attr_name, d.get(attr_name))
         parsed_tag.finish_init()
@@ -150,6 +144,15 @@ class ParsedTag:
         )
 
     __str__ = __repr__
+
+    def get_version_tuple(self) -> Tuple[int, int, int, int, int]:
+        return (
+            self.major_version,
+            self.minor_version,
+            self.patch_version,
+            self.yb_suffix_version or 0,
+            int(self.timestamp) if self.timestamp is not None else 0
+        )
 
 
 class LlvmPackageCollection:
@@ -166,7 +169,13 @@ class LlvmPackageCollection:
     @classmethod
     def get_instance(self) -> 'LlvmPackageCollection':
         if not LlvmPackageCollection._instance:
-            LlvmPackageCollection._instance = LlvmPackageCollection(TAGS)
+            with open(get_release_tags_file_path()) as release_tags_file:
+                json_data = json.load(release_tags_file)
+                parsed_tags: List[ParsedTag] = []
+                for json_data_for_tag in json_data['parsed_tags']:
+                    parsed_tag = ParsedTag.from_dict(json_data_for_tag)
+                    parsed_tags.append(parsed_tag)
+            LlvmPackageCollection._instance = LlvmPackageCollection(parsed_tags)
         return LlvmPackageCollection._instance
 
     def filter(
@@ -254,9 +263,19 @@ class LlvmInstaller:
         if len(parsed_tags) == 1:
             return parsed_tags[0]
 
+        max_version_tuple = max([parsed_tag.get_version_tuple() for parsed_tag in parsed_tags])
+        highest_version_tags = [
+            parsed_tag for parsed_tag in parsed_tags
+            if parsed_tag.get_version_tuple() == max_version_tuple
+        ]
+        if len(highest_version_tags) == 1:
+            return highest_version_tags[0]
+
         raise ValueError(
-            f"Multiple packages found for {selection_criteria_str}: {filtered_packages}")
+            f"Multiple packages found for {selection_criteria_str} with the same "
+            f"highest version tuple ({max_version_tuple}): " +
+            "\n".join([str(p) for p in filtered_packages.parsed_tags]))
 
     def get_llvm_url(self, major_llvm_version: int) -> str:
-        return self.get_url_for_tag(self.get_parsed_tag(
-            major_llvm_version=major_llvm_version).tag)
+        return self.get_url_for_tag(
+            self.get_parsed_tag(major_llvm_version=major_llvm_version).tag)

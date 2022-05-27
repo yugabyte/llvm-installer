@@ -13,12 +13,12 @@
 import os
 import unittest
 
-from llvm_installer import TAGS, LlvmPackageCollection, LlvmInstaller
+from llvm_installer import LlvmPackageCollection, LlvmInstaller
 
 
 class LlvmInstallerTest(unittest.TestCase):
     def test_package_collection(self) -> None:
-        pkg_collection = LlvmPackageCollection(TAGS)
+        pkg_collection = LlvmPackageCollection.get_instance()
 
     def test_get_url(self) -> None:
         for major_llvm_version in [12, 13, 14]:
