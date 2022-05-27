@@ -1,4 +1,4 @@
-# sys-detection
+# llvm-installer
 
 https://pypi.org/project/llvm-installer/
 
