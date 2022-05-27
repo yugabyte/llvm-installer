@@ -32,7 +32,7 @@ if __name__ == '__main__':
         description='Allows installing pre-built LLVM packages for various operating systems',
         packages=find_packages(where='src'),
         package_dir={"": "src"},
-        package_data={'llvm_installer': ['py.typed']},
+        package_data={'llvm_installer': ['py.typed', 'release_tags.json']},
         install_requires=[
             'packaging',
             'sys-detection',
