@@ -132,7 +132,6 @@ class ParsedTag:
     @staticmethod
     def from_dict(d: Dict[str, Optional[str]]) -> 'ParsedTag':
         parsed_tag = ParsedTag()
-        sys.stderr.write("Dict: %s, type(d)=%s\n" % (d, type(d)))
         for attr_name in ParsedTag.ATTR_NAMES:
             setattr(parsed_tag, attr_name, d.get(attr_name))
         parsed_tag.finish_init()

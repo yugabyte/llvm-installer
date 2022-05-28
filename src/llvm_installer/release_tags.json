@@ -131,6 +131,19 @@
       "yb_suffix_version": 1
     },
     {
+      "architecture": "aarch64",
+      "major_version": 12,
+      "minor_version": 0,
+      "patch_version": 1,
+      "sha1_prefix": "bdb147e6",
+      "short_os_name_and_version": "ubuntu22.04",
+      "tag": "v12.0.1-yb-1-1653663911-bdb147e6-ubuntu22.04-aarch64",
+      "timestamp": "1653663911",
+      "version": "12.0.1",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "x86_64",
       "major_version": 12,
       "minor_version": 0,
@@ -261,6 +274,19 @@
       "yb_suffix_version": 1
     },
     {
+      "architecture": "aarch64",
+      "major_version": 13,
+      "minor_version": 0,
+      "patch_version": 1,
+      "sha1_prefix": "191e3a05",
+      "short_os_name_and_version": "ubuntu22.04",
+      "tag": "v13.0.1-yb-1-1653668069-191e3a05-ubuntu22.04-aarch64",
+      "timestamp": "1653668069",
+      "version": "13.0.1",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "x86_64",
       "major_version": 13,
       "minor_version": 0,
@@ -386,6 +412,19 @@
       "short_os_name_and_version": "ubuntu20.04",
       "tag": "v14.0.3-1651708261-1f914006-ubuntu20.04-x86_64",
       "timestamp": "1651708261",
+      "version": "14.0.3",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "aarch64",
+      "major_version": 14,
+      "minor_version": 0,
+      "patch_version": 3,
+      "sha1_prefix": "1f914006",
+      "short_os_name_and_version": "ubuntu22.04",
+      "tag": "v14.0.3-1653672997-1f914006-ubuntu22.04-aarch64",
+      "timestamp": "1653672997",
       "version": "14.0.3",
       "version_suffix": null,
       "yb_suffix_version": null
