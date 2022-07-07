@@ -12,16 +12,37 @@
 
 
 """
-Invokes the LLVM installer.
+The command-line entry point to the llvm-installer Python module.
 """
 
 import argparse
 
+from llvm_installer import LlvmInstaller
+from sys_detection import local_sys_conf
+
 
 def main() -> None:
-    arg_parser = argparse.ArgumentParser(__doc__)
-    arg_parser.parse_args()
-    print('Hello world')
+    arg_parser = argparse.ArgumentParser(
+        prog='llvm-installer',
+        description=__doc__)
+    arg_parser.add_argument(
+        '--llvm-major-version',
+        help='LLVM major version of interest',
+        required=True)
+    arg_parser.add_argument(
+        '--print-url',
+        action='store_true',
+        help='If this is specified, LLVM package download URL is printed to standard output')
+
+    args = arg_parser.parse_args()
+    if args.print_url:
+        sys_conf = local_sys_conf()
+        short_os_name_and_version = sys_conf.short_os_name_and_version()
+        installer = LlvmInstaller(
+            short_os_name_and_version=short_os_name_and_version,
+            architecture=sys_conf.architecture)
+        llvm_url = installer.get_llvm_url(major_llvm_version=args.llvm_major_version)
+        print(llvm_url)
 
 
 if __name__ == '__main__':

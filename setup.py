@@ -51,5 +51,8 @@ if __name__ == '__main__':
                 'mypy',
                 'PyGithub',
             ]
+        },
+        entry_points={
+            'console_scripts': ['llvm-installer=llvm_installer.__main__:main'],
         }
     )
