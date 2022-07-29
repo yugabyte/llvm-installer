@@ -23,7 +23,13 @@ from github.GitRelease import GitRelease
 
 
 def main() -> None:
-    github_client = Github(login_or_token=os.getenv('GITHUB_TOKEN'))
+    github_token_file_path = os.path.expanduser('~/.github-token')
+    github_token = os.getenv('GITHUB_TOKEN')
+    if not github_token and os.path.exists(github_token_file_path):
+        with open(github_token_file_path) as github_token_file:
+            github_token = github_token_file.read().strip()
+
+    github_client = Github(login_or_token=github_token)
     repo = github_client.get_repo('yugabyte/build-clang')
     installer = LlvmInstaller()
     valid_tags = []
