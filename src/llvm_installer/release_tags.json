@@ -1,7 +1,316 @@
 {
   "parsed_tags": [
     {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": true,
+      "major_version": 7,
+      "minor_version": 0,
+      "patch_version": 1,
+      "sha1_prefix": "d0d8eb2e",
+      "short_os_name_and_version": "centos7",
+      "tag": "v7.0.1-1617491768-d0d8eb2e",
+      "timestamp": "1617491768",
+      "version": "7.0.1",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": true,
+      "major_version": 7,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "4856a933",
+      "short_os_name_and_version": "centos7",
+      "tag": "v7.1.0-1617644423-4856a933",
+      "timestamp": "1617644423",
+      "version": "7.1.0",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": true,
+      "major_version": 8,
+      "minor_version": 0,
+      "patch_version": 1,
+      "sha1_prefix": "19a71f6b",
+      "short_os_name_and_version": "centos7",
+      "tag": "v8.0.1-1617498465-19a71f6b",
+      "timestamp": "1617498465",
+      "version": "8.0.1",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": true,
+      "major_version": 8,
+      "minor_version": 0,
+      "patch_version": 1,
+      "sha1_prefix": "19a71f6b",
+      "short_os_name_and_version": "centos7",
+      "tag": "v8.0.1-1617644441-19a71f6b",
+      "timestamp": "1617644441",
+      "version": "8.0.1",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": true,
+      "major_version": 9,
+      "minor_version": 0,
+      "patch_version": 1,
+      "sha1_prefix": "c1a0a213",
+      "short_os_name_and_version": "centos7",
+      "tag": "v9.0.1-1616808282-c1a0a213",
+      "timestamp": "1616808282",
+      "version": "9.0.1",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": true,
+      "major_version": 9,
+      "minor_version": 0,
+      "patch_version": 1,
+      "sha1_prefix": "c1a0a213",
+      "short_os_name_and_version": "centos7",
+      "tag": "v9.0.1-1617505265-c1a0a213",
+      "timestamp": "1617505265",
+      "version": "9.0.1",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": true,
+      "major_version": 9,
+      "minor_version": 0,
+      "patch_version": 1,
+      "sha1_prefix": "c1a0a213",
+      "short_os_name_and_version": "centos7",
+      "tag": "v9.0.1-1617644464-c1a0a213",
+      "timestamp": "1617644464",
+      "version": "9.0.1",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": true,
+      "major_version": 9,
+      "minor_version": 0,
+      "patch_version": 1,
+      "sha1_prefix": "c1a0a213",
+      "short_os_name_and_version": "centos7",
+      "tag": "v9.0.1-1617646511-c1a0a213",
+      "timestamp": "1617646511",
+      "version": "9.0.1",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": true,
+      "major_version": 10,
+      "minor_version": 0,
+      "patch_version": 1,
+      "sha1_prefix": "ef32c611",
+      "short_os_name_and_version": "centos7",
+      "tag": "v10.0.1-1617662811-ef32c611",
+      "timestamp": "1617662811",
+      "version": "10.0.1",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 11,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "130bd22e",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v11.1.0-yb-1-1648471085-130bd22e-almalinux8-aarch64",
+      "timestamp": "1648471085",
+      "version": "11.1.0",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 11,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "1fdec59b",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v11.1.0-1630702159-1fdec59b-almalinux8-x86_64",
+      "timestamp": "1630702159",
+      "version": "11.1.0",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 11,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "130bd22e",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v11.1.0-yb-1-1633143292-130bd22e-almalinux8-x86_64",
+      "timestamp": "1633143292",
+      "version": "11.1.0",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 11,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "130bd22e",
+      "short_os_name_and_version": "amzn2",
+      "tag": "v11.1.0-yb-1-1647671171-130bd22e-amzn2-aarch64",
+      "timestamp": "1647671171",
+      "version": "11.1.0",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": true,
+      "major_version": 11,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "1fdec59b",
+      "short_os_name_and_version": "centos7",
+      "tag": "v11.1.0-1617470305-1fdec59b",
+      "timestamp": "1617470305",
+      "version": "11.1.0",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": true,
+      "major_version": 11,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "1fdec59b",
+      "short_os_name_and_version": "centos7",
+      "tag": "v11.1.0-1617484806-1fdec59b-static",
+      "timestamp": "1617484806",
+      "version": "11.1.0",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": true,
+      "major_version": 11,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "1fdec59b",
+      "short_os_name_and_version": "centos7",
+      "tag": "v11.1.0-1627355696-1fdec59b-aarch64",
+      "timestamp": "1627355696",
+      "version": "11.1.0",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": true,
+      "major_version": 11,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "1fdec59b",
+      "short_os_name_and_version": "centos7",
+      "tag": "v11.1.0-1629996962-1fdec59b-x86_64",
+      "timestamp": "1629996962",
+      "version": "11.1.0",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": true,
+      "major_version": 11,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "1fdec59b",
+      "short_os_name_and_version": "centos7",
+      "tag": "v11.1.0-1630023302-1fdec59b-no-rpath-x86_64",
+      "timestamp": "1630023302",
+      "version": "11.1.0",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 11,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "1fdec59b",
+      "short_os_name_and_version": "centos7",
+      "tag": "v11.1.0-1632453400-1fdec59b-centos7-x86_64",
+      "timestamp": "1632453400",
+      "version": "11.1.0",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 11,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "130bd22e",
+      "short_os_name_and_version": "centos7",
+      "tag": "v11.1.0-yb-1-1633099975-130bd22e-centos7-x86_64",
+      "timestamp": "1633099975",
+      "version": "11.1.0",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 11,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "130bd22e",
+      "short_os_name_and_version": "centos8",
+      "tag": "v11.1.0-yb-1-1633544021-130bd22e-centos8-aarch64",
+      "timestamp": "1633544021",
+      "version": "11.1.0",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 11,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "130bd22e",
+      "short_os_name_and_version": "centos8",
+      "tag": "v11.1.0-yb-1-1639856412-130bd22e-centos8-aarch64",
+      "timestamp": "1639856412",
+      "version": "11.1.0",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -15,6 +324,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -28,6 +338,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -41,6 +352,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -54,6 +366,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -67,6 +380,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -80,6 +394,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -93,6 +408,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -106,6 +422,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -119,6 +436,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -132,6 +450,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -145,6 +464,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -158,6 +478,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -171,6 +492,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -184,6 +506,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -197,6 +520,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -210,6 +534,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -223,6 +548,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -236,6 +562,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
       "minor_version": 0,
       "patch_version": 1,
@@ -249,6 +576,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -262,6 +590,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -275,6 +604,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -288,6 +618,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -301,6 +632,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -314,6 +646,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -327,6 +660,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -340,6 +674,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -353,6 +688,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -366,6 +702,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 0,
@@ -379,6 +716,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -392,6 +730,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -405,6 +744,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -418,6 +758,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -431,6 +772,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -444,6 +786,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -457,6 +800,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -470,6 +814,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 13,
       "minor_version": 0,
       "patch_version": 1,
@@ -483,6 +828,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 0,
@@ -496,6 +842,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 6,
@@ -509,6 +856,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 0,
@@ -522,6 +870,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 3,
@@ -535,6 +884,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 6,
@@ -548,6 +898,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 0,
@@ -561,6 +912,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 0,
@@ -574,6 +926,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 3,
@@ -587,6 +940,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 6,
@@ -600,6 +954,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 3,
@@ -613,6 +968,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 3,
@@ -626,6 +982,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 6,
@@ -639,6 +996,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 3,
@@ -652,6 +1010,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 6,
@@ -665,6 +1024,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 3,
@@ -678,6 +1038,7 @@
     },
     {
       "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 6,
@@ -691,6 +1052,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 3,
@@ -704,6 +1066,7 @@
     },
     {
       "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
       "major_version": 14,
       "minor_version": 0,
       "patch_version": 6,

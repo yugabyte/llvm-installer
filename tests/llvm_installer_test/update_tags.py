@@ -53,11 +53,10 @@ def main() -> None:
                 logging.warning("Skipping tag due to error: %s", ex)
                 continue
 
-            if parsed_tag.major_version < 12:
-                logging.warning("Skipping old release version: %s", parsed_tag)
-                continue
-
             logging.info("Tag: %s", parsed_tag)
+            if parsed_tag.is_old_tag_without_os_and_arch and parsed_tag.major_version >= 12:
+                logging.warning("Skipping old-style tag for an LLVM version of 12 or later")
+                continue
             valid_tags.append(parsed_tag)
         else:
             logging.info(

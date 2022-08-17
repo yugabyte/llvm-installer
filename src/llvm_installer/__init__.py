@@ -31,14 +31,19 @@ DEFAULT_GITHUB_RELEASE_URL_PREFIX = 'https://github.com/yugabyte/build-clang/rel
 DEFAULT_PACKAGE_NAME_PREFIX = 'yb-llvm-'
 DEFAULT_PACKAGE_NAME_SUFFIX = '.tar.gz'
 
-TAG_RE_STR = ''.join([
+TAG_RE_WITHOUT_OS_AND_ARCH_COMPONENTS = [
     r'^',
     r'v(?P<version>[0-9.]+)',
     r'(-(?P<version_suffix>[a-z0-9-]+))?',
     r'-',
     r'(?P<timestamp>\d+)',
     r'-',
-    r'(?P<sha1_prefix>[0-9a-f]+)',
+    r'(?P<sha1_prefix>[0-9a-f]+)'
+]
+
+TAG_RE_WITHOUT_OS_AND_ARCH_RE_STR = ''.join(TAG_RE_WITHOUT_OS_AND_ARCH_COMPONENTS)
+
+TAG_RE_STR = ''.join(TAG_RE_WITHOUT_OS_AND_ARCH_COMPONENTS + [
     r'-',
     rf'(?P<short_os_name_and_version>(?:{SHORT_OS_NAME_REGEX_STR})[0-9.]*)',
     r'-',
@@ -46,10 +51,15 @@ TAG_RE_STR = ''.join([
     r'$'
 ])
 
+
 TAG_RE_GROUP_KEYS = re.findall(r'(?<=<)[a-z0-9_]+(?=>)', TAG_RE_STR)
 assert len(TAG_RE_GROUP_KEYS) == 6, "Expected to see 6 capture groups in regex " + TAG_RE_STR
 
 TAG_RE = re.compile(TAG_RE_STR)
+TAG_RE_WITHOUT_OS_AND_ARCH = re.compile(TAG_RE_WITHOUT_OS_AND_ARCH_RE_STR)
+
+DEFAULT_SHORT_OS_NAME_AND_VERSION_FOR_OLD_BUILDS = 'centos7'
+DEFAULT_ARCHITECTURE_FOR_OLD_BUILDS = 'x86_64'
 
 
 def get_release_tags_file_path() -> str:
@@ -76,13 +86,19 @@ class ParsedTag:
     patch_version: int
     yb_suffix_version: Optional[int]
 
+    is_old_tag_without_os_and_arch: bool
+
     ATTR_NAMES = TAG_RE_GROUP_KEYS + [
-        'tag', 'major_version', 'minor_version', 'patch_version', 'yb_suffix_version']
+        'tag', 'major_version', 'minor_version', 'patch_version', 'yb_suffix_version',
+        'is_old_tag_without_os_and_arch']
 
     def __init__(self) -> None:
         pass
 
-    def finish_init(self) -> None:
+    def finish_init(self, is_old_tag_without_os_and_arch: bool) -> None:
+        # Needed for the case when is_old_tag_without_os_and_arch is parsed out of JSON.
+        assert is_old_tag_without_os_and_arch in [True, False]
+
         version_components = self.version.split('.')
         self.major_version = int(version_components[0])
         self.minor_version = int(version_components[1])
@@ -94,22 +110,38 @@ class ParsedTag:
         assert self.version is not None
         assert self.timestamp is not None
         assert self.sha1_prefix is not None
-        assert self.short_os_name_and_version is not None
-        assert self.architecture is not None
+
+        self.is_old_tag_without_os_and_arch = is_old_tag_without_os_and_arch
+        if is_old_tag_without_os_and_arch:
+            # These old builds without OS name/version and arch in the tag were all CentOS 7 x86_64.
+            assert (
+                not hasattr(self, 'short_os_name_and_version') or
+                self.short_os_name_and_version == DEFAULT_SHORT_OS_NAME_AND_VERSION_FOR_OLD_BUILDS)
+            self.short_os_name_and_version = DEFAULT_SHORT_OS_NAME_AND_VERSION_FOR_OLD_BUILDS
+            assert (not hasattr(self, 'architecture') or
+                    self.architecture == DEFAULT_ARCHITECTURE_FOR_OLD_BUILDS)
+            self.architecture = DEFAULT_ARCHITECTURE_FOR_OLD_BUILDS
+        else:
+            assert self.short_os_name_and_version is not None
+            assert self.architecture is not None
 
     @staticmethod
     def from_tag(tag: str) -> 'ParsedTag':
         parsed_tag = ParsedTag()
         parsed_tag.tag = tag
         m = TAG_RE.match(tag)
+        is_old_tag_without_os_and_arch = False
         if not m:
-            raise TagParsingError(
-                f"Cannot parse tag: {tag}. Does not match regular expression: {TAG_RE_STR}")
+            m = TAG_RE_WITHOUT_OS_AND_ARCH.match(tag)
+            if not m:
+                raise TagParsingError(
+                    f"Cannot parse tag: {tag}. Does not match regular expression: {TAG_RE_STR}")
+            is_old_tag_without_os_and_arch = True
         for k, v in m.groupdict().items():
             assert k in TAG_RE_GROUP_KEYS, \
                 f'Unexpected parsed tag group key: {k}, valid keys: {TAG_RE_GROUP_KEYS}'
             setattr(parsed_tag, k, v)
-        parsed_tag.finish_init()
+        parsed_tag.finish_init(is_old_tag_without_os_and_arch=is_old_tag_without_os_and_arch)
         return parsed_tag
 
     def get_sort_key(self) -> Tuple[Union[str, int], ...]:
@@ -134,7 +166,8 @@ class ParsedTag:
         parsed_tag = ParsedTag()
         for attr_name in ParsedTag.ATTR_NAMES:
             setattr(parsed_tag, attr_name, d.get(attr_name))
-        parsed_tag.finish_init()
+        parsed_tag.finish_init(
+            is_old_tag_without_os_and_arch=parsed_tag.is_old_tag_without_os_and_arch)
         return parsed_tag
 
     def __repr__(self) -> str:
