@@ -1077,6 +1077,20 @@
       "version": "14.0.6",
       "version_suffix": "yb-1",
       "yb_suffix_version": 1
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 0,
+      "patch_version": 0,
+      "sha1_prefix": "6973cf27",
+      "short_os_name_and_version": "centos7",
+      "tag": "v15.0.0-yb-1-1662941643-6973cf27-centos7-x86_64",
+      "timestamp": "1662941643",
+      "version": "15.0.0",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
     }
   ]
 }
