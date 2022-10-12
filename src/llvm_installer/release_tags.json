@@ -393,6 +393,20 @@
       "yb_suffix_version": 1
     },
     {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 12,
+      "minor_version": 0,
+      "patch_version": 1,
+      "sha1_prefix": "22764466",
+      "short_os_name_and_version": "centos7",
+      "tag": "v12.0.1-yb-2-1665532399-22764466-centos7-aarch64",
+      "timestamp": "1665532399",
+      "version": "12.0.1",
+      "version_suffix": "yb-2",
+      "yb_suffix_version": 2
+    },
+    {
       "architecture": "x86_64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 12,
