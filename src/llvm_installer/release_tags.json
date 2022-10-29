@@ -1294,6 +1294,20 @@
       "major_version": 15,
       "minor_version": 0,
       "patch_version": 2,
+      "sha1_prefix": "b19371b8",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v15.0.2-yb-2-1666671506-b19371b8-almalinux8-x86_64",
+      "timestamp": "1666671506",
+      "version": "15.0.2",
+      "version_suffix": "yb-2",
+      "yb_suffix_version": 2
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 0,
+      "patch_version": 2,
       "sha1_prefix": "b99cfaaf",
       "short_os_name_and_version": "almalinux8",
       "tag": "v15.0.2-yb-3-1666829690-b99cfaaf-almalinux8-x86_64",
@@ -1301,6 +1315,20 @@
       "version": "15.0.2",
       "version_suffix": "yb-3",
       "yb_suffix_version": 3
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 0,
+      "patch_version": 3,
+      "sha1_prefix": "0b8d1183",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v15.0.3-yb-1-1667030060-0b8d1183-almalinux8-x86_64",
+      "timestamp": "1667030060",
+      "version": "15.0.3",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
     },
     {
       "architecture": "aarch64",
