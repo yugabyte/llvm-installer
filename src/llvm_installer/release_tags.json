@@ -1247,6 +1247,20 @@
       "yb_suffix_version": 2
     },
     {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 0,
+      "patch_version": 3,
+      "sha1_prefix": "0b8d1183",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v15.0.3-yb-1-1667030098-0b8d1183-almalinux8-aarch64",
+      "timestamp": "1667030098",
+      "version": "15.0.3",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "x86_64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 15,
@@ -1357,6 +1371,20 @@
       "version": "15.0.2",
       "version_suffix": "yb-2",
       "yb_suffix_version": 2
+    },
+    {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 0,
+      "patch_version": 3,
+      "sha1_prefix": "0b8d1183",
+      "short_os_name_and_version": "centos7",
+      "tag": "v15.0.3-yb-1-1667030101-0b8d1183-centos7-aarch64",
+      "timestamp": "1667030101",
+      "version": "15.0.3",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
     },
     {
       "architecture": "x86_64",
