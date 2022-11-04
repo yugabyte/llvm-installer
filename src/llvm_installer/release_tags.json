@@ -1429,6 +1429,20 @@
       "yb_suffix_version": 2
     },
     {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 0,
+      "patch_version": 3,
+      "sha1_prefix": "0b8d1183",
+      "short_os_name_and_version": "centos7",
+      "tag": "v15.0.3-yb-1-1667341687-0b8d1183-centos7-x86_64",
+      "timestamp": "1667341687",
+      "version": "15.0.3",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "arm64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 15,
@@ -1471,6 +1485,34 @@
       "yb_suffix_version": 2
     },
     {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 0,
+      "patch_version": 3,
+      "sha1_prefix": "0b8d1183",
+      "short_os_name_and_version": "ubuntu20.04",
+      "tag": "v15.0.3-yb-1-1667076549-0b8d1183-ubuntu20.04-aarch64",
+      "timestamp": "1667076549",
+      "version": "15.0.3",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 0,
+      "patch_version": 3,
+      "sha1_prefix": "0b8d1183",
+      "short_os_name_and_version": "ubuntu20.04",
+      "tag": "v15.0.3-yb-1-1667411730-0b8d1183-ubuntu20.04-aarch64",
+      "timestamp": "1667411730",
+      "version": "15.0.3",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "x86_64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 15,
@@ -1483,6 +1525,20 @@
       "version": "15.0.2",
       "version_suffix": "yb-2",
       "yb_suffix_version": 2
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 0,
+      "patch_version": 3,
+      "sha1_prefix": "0b8d1183",
+      "short_os_name_and_version": "ubuntu20.04",
+      "tag": "v15.0.3-yb-1-1667342161-0b8d1183-ubuntu20.04-x86_64",
+      "timestamp": "1667342161",
+      "version": "15.0.3",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
     },
     {
       "architecture": "aarch64",
@@ -1513,6 +1569,20 @@
       "yb_suffix_version": 2
     },
     {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 0,
+      "patch_version": 3,
+      "sha1_prefix": "0b8d1183",
+      "short_os_name_and_version": "ubuntu22.04",
+      "tag": "v15.0.3-yb-1-1667400365-0b8d1183-ubuntu22.04-aarch64",
+      "timestamp": "1667400365",
+      "version": "15.0.3",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "x86_64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 15,
@@ -1525,6 +1595,20 @@
       "version": "15.0.2",
       "version_suffix": "yb-2",
       "yb_suffix_version": 2
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 0,
+      "patch_version": 3,
+      "sha1_prefix": "0b8d1183",
+      "short_os_name_and_version": "ubuntu22.04",
+      "tag": "v15.0.3-yb-1-1667342215-0b8d1183-ubuntu22.04-x86_64",
+      "timestamp": "1667342215",
+      "version": "15.0.3",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
     }
   ]
 }
