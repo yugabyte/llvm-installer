@@ -50,6 +50,7 @@ if __name__ == '__main__':
                 'pycodestyle',
                 'mypy',
                 'PyGithub',
+                'twine',
             ]
         },
         entry_points={

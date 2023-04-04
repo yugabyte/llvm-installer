@@ -18,14 +18,7 @@ set -euo pipefail -x
 cd "${BASH_SOURCE[0]%/*}"/..
 
 rm -f dist/*
+make venv
 python3 setup.py sdist
 
-# "command -v" is somewhat similar to "which".
-# https://github.com/koalaman/shellcheck/wiki/SC2230
-if command -v twine >/dev/null; then
-  twine_cmd=twine
-else
-  twine_cmd=( python3 -m twine )
-fi
-
-"${twine_cmd[@]}" upload dist/*
+venv/bin/python3 -m twine upload dist/*
