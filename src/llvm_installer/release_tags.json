@@ -1401,6 +1401,20 @@
       "yb_suffix_version": 1
     },
     {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 0,
+      "patch_version": 7,
+      "sha1_prefix": "6b9d30d8",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v15.0.7-yb-1-1680619491-6b9d30d8-almalinux8-x86_64",
+      "timestamp": "1680619491",
+      "version": "15.0.7",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "aarch64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 15,
@@ -1765,6 +1779,20 @@
       "yb_suffix_version": 1
     },
     {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 0,
+      "patch_version": 7,
+      "sha1_prefix": "6b9d30d8",
+      "short_os_name_and_version": "ubuntu20.04",
+      "tag": "v15.0.7-yb-1-1680624223-6b9d30d8-ubuntu20.04-x86_64",
+      "timestamp": "1680624223",
+      "version": "15.0.7",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "aarch64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 15,
@@ -1873,6 +1901,20 @@
       "tag": "v15.0.6-yb-1-1672538824-7ab3224c-ubuntu22.04-x86_64",
       "timestamp": "1672538824",
       "version": "15.0.6",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 0,
+      "patch_version": 7,
+      "sha1_prefix": "6b9d30d8",
+      "short_os_name_and_version": "ubuntu22.04",
+      "tag": "v15.0.7-yb-1-1680628984-6b9d30d8-ubuntu22.04-x86_64",
+      "timestamp": "1680628984",
+      "version": "15.0.7",
       "version_suffix": "yb-1",
       "yb_suffix_version": 1
     },
