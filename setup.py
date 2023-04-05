@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     setup(
         name='llvm-installer',
-        version='1.2.5',
+        version='1.2.6',
         url='https://github.com/yugabyte/llvm-installer',
         author='Mikhail Bautin',
         author_email='mbautin@users.noreply.github.com',
