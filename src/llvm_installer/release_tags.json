@@ -2178,8 +2178,8 @@
       "patch_version": 1,
       "sha1_prefix": "58dbb949",
       "short_os_name_and_version": "macos",
-      "tag": "v16.0.1-yb-1-1681341234-58dbb949-macos-arm64",
-      "timestamp": "1681341234",
+      "tag": "v16.0.1-yb-1-1681453567-58dbb949-macos-arm64",
+      "timestamp": "1681453567",
       "version": "16.0.1",
       "version_suffix": "yb-1",
       "yb_suffix_version": 1
