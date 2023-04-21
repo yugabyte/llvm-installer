@@ -2213,6 +2213,20 @@
       "yb_suffix_version": 1
     },
     {
+      "architecture": "arm64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 16,
+      "minor_version": 0,
+      "patch_version": 1,
+      "sha1_prefix": "58dbb949",
+      "short_os_name_and_version": "macos",
+      "tag": "v16.0.1-yb-1-1682020538-58dbb949-macos-arm64",
+      "timestamp": "1682020538",
+      "version": "16.0.1",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "x86_64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 16,
@@ -2236,6 +2250,20 @@
       "short_os_name_and_version": "macos",
       "tag": "v16.0.1-yb-1-1681324020-58dbb949-macos-x86_64",
       "timestamp": "1681324020",
+      "version": "16.0.1",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 16,
+      "minor_version": 0,
+      "patch_version": 1,
+      "sha1_prefix": "58dbb949",
+      "short_os_name_and_version": "macos",
+      "tag": "v16.0.1-yb-1-1682021461-58dbb949-macos-x86_64",
+      "timestamp": "1682021461",
       "version": "16.0.1",
       "version_suffix": "yb-1",
       "yb_suffix_version": 1
