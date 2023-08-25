@@ -3135,6 +3135,62 @@
       "version": "16.0.6",
       "version_suffix": "yb-2",
       "yb_suffix_version": 2
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 0,
+      "sha1_prefix": "ff047e99",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v17.0.0-rc3-yb-1-1692923857-ff047e99-almalinux8-x86_64",
+      "timestamp": "1692923857",
+      "version": "17.0.0",
+      "version_suffix": "rc3-yb-1",
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 0,
+      "sha1_prefix": "ff047e99",
+      "short_os_name_and_version": "almalinux9",
+      "tag": "v17.0.0-rc3-yb-1-1692925378-ff047e99-almalinux9-x86_64",
+      "timestamp": "1692925378",
+      "version": "17.0.0",
+      "version_suffix": "rc3-yb-1",
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 0,
+      "sha1_prefix": "ff047e99",
+      "short_os_name_and_version": "centos7",
+      "tag": "v17.0.0-rc3-yb-1-1692919510-ff047e99-centos7-aarch64",
+      "timestamp": "1692919510",
+      "version": "17.0.0",
+      "version_suffix": "rc3-yb-1",
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 0,
+      "sha1_prefix": "ff047e99",
+      "short_os_name_and_version": "centos7",
+      "tag": "v17.0.0-rc3-yb-1-1692922308-ff047e99-centos7-x86_64",
+      "timestamp": "1692922308",
+      "version": "17.0.0",
+      "version_suffix": "rc3-yb-1",
+      "yb_suffix_version": null
     }
   ]
 }
