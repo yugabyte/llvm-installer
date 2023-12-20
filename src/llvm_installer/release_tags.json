@@ -3459,6 +3459,20 @@
       "yb_suffix_version": 1
     },
     {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 6,
+      "sha1_prefix": "9b881774",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v17.0.6-yb-1-1702611623-9b881774-almalinux8-aarch64",
+      "timestamp": "1702611623",
+      "version": "17.0.6",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "x86_64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 17,
@@ -3539,6 +3553,20 @@
       "tag": "v17.0.5-yb-1-1700600530-ed9169b9-almalinux8-x86_64",
       "timestamp": "1700600530",
       "version": "17.0.5",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 6,
+      "sha1_prefix": "9b881774",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v17.0.6-yb-1-1702605315-9b881774-almalinux8-x86_64",
+      "timestamp": "1702605315",
+      "version": "17.0.6",
       "version_suffix": "yb-1",
       "yb_suffix_version": 1
     },
@@ -3627,6 +3655,20 @@
       "yb_suffix_version": 1
     },
     {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 6,
+      "sha1_prefix": "9b881774",
+      "short_os_name_and_version": "almalinux9",
+      "tag": "v17.0.6-yb-1-1702620900-9b881774-almalinux9-aarch64",
+      "timestamp": "1702620900",
+      "version": "17.0.6",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "x86_64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 17,
@@ -3711,6 +3753,20 @@
       "yb_suffix_version": 1
     },
     {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 6,
+      "sha1_prefix": "9b881774",
+      "short_os_name_and_version": "almalinux9",
+      "tag": "v17.0.6-yb-1-1702608813-9b881774-almalinux9-x86_64",
+      "timestamp": "1702608813",
+      "version": "17.0.6",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "aarch64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 17,
@@ -3791,6 +3847,20 @@
       "tag": "v17.0.5-yb-1-1700594510-ed9169b9-centos7-aarch64",
       "timestamp": "1700594510",
       "version": "17.0.5",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 6,
+      "sha1_prefix": "9b881774",
+      "short_os_name_and_version": "centos7",
+      "tag": "v17.0.6-yb-1-1702601841-9b881774-centos7-aarch64",
+      "timestamp": "1702601841",
+      "version": "17.0.6",
       "version_suffix": "yb-1",
       "yb_suffix_version": 1
     },
@@ -3907,6 +3977,20 @@
       "yb_suffix_version": 1
     },
     {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 6,
+      "sha1_prefix": "9b881774",
+      "short_os_name_and_version": "centos7",
+      "tag": "v17.0.6-yb-1-1702601731-9b881774-centos7-x86_64",
+      "timestamp": "1702601731",
+      "version": "17.0.6",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "arm64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 17,
@@ -3959,6 +4043,20 @@
       "tag": "v17.0.5-yb-1-1700594459-ed9169b9-macos-arm64",
       "timestamp": "1700594459",
       "version": "17.0.5",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "arm64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 6,
+      "sha1_prefix": "9b881774",
+      "short_os_name_and_version": "macos",
+      "tag": "v17.0.6-yb-1-1702625531-9b881774-macos-arm64",
+      "timestamp": "1702625531",
+      "version": "17.0.6",
       "version_suffix": "yb-1",
       "yb_suffix_version": 1
     },
@@ -4043,6 +4141,20 @@
       "tag": "v17.0.5-yb-1-1700622335-ed9169b9-ubuntu22.04-aarch64",
       "timestamp": "1700622335",
       "version": "17.0.5",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 6,
+      "sha1_prefix": "9b881774",
+      "short_os_name_and_version": "ubuntu22.04",
+      "tag": "v17.0.6-yb-1-1702630300-9b881774-ubuntu22.04-aarch64",
+      "timestamp": "1702630300",
+      "version": "17.0.6",
       "version_suffix": "yb-1",
       "yb_suffix_version": 1
     },
@@ -4135,6 +4247,20 @@
       "is_old_tag_without_os_and_arch": false,
       "major_version": 17,
       "minor_version": 0,
+      "patch_version": 6,
+      "sha1_prefix": "9b881774",
+      "short_os_name_and_version": "ubuntu22.04",
+      "tag": "v17.0.6-yb-1-1702612479-9b881774-ubuntu22.04-x86_64",
+      "timestamp": "1702612479",
+      "version": "17.0.6",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
       "patch_version": 0,
       "sha1_prefix": "f4941784",
       "short_os_name_and_version": "ubuntu23.04",
@@ -4197,6 +4323,20 @@
       "tag": "v17.0.5-yb-1-1700613665-ed9169b9-ubuntu23.04-x86_64",
       "timestamp": "1700613665",
       "version": "17.0.5",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 6,
+      "sha1_prefix": "9b881774",
+      "short_os_name_and_version": "ubuntu23.04",
+      "tag": "v17.0.6-yb-1-1702615943-9b881774-ubuntu23.04-x86_64",
+      "timestamp": "1702615943",
+      "version": "17.0.6",
       "version_suffix": "yb-1",
       "yb_suffix_version": 1
     }
