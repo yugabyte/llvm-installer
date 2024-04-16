@@ -21,4 +21,4 @@ rm -f dist/*
 make venv
 python3 setup.py sdist
 
-venv/bin/python3 -m twine upload dist/*
+venv/bin/python3 -m twine upload -u __token__ dist/*
