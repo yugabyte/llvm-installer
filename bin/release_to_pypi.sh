@@ -19,6 +19,7 @@ cd "${BASH_SOURCE[0]%/*}"/..
 
 rm -f dist/*
 make venv
+. venv/bin/activate
 python3 setup.py sdist
 
 venv/bin/python3 -m twine upload -u __token__ dist/*
