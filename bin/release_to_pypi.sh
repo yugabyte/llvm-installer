@@ -31,7 +31,7 @@ python3 setup.py sdist
 #   llvm-installer
 #
 # [pypi]
-# repository: https://upload.pypi.org/legacy/
+# repository = https://upload.pypi.org/legacy/
 #
 # [llvm-installer]
 # username = __token__
