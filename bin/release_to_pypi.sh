@@ -23,4 +23,18 @@ make venv
 pip3 install setuptools
 python3 setup.py sdist
 
-venv/bin/python3 -m twine upload -u __token__ dist/*
+# Set up your .pypirc file as follows;
+#
+# [distutils]
+# index-servers =
+#   pypi
+#   llvm-installer
+#
+# [pypi]
+# repository: https://upload.pypi.org/legacy/
+#
+# [llvm-installer]
+# username = __token__
+# password = pypi-... (the actual token value)
+
+venv/bin/python3 -m twine upload --repository llvm-installer dist/*
