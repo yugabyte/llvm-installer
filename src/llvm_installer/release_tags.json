@@ -3487,6 +3487,20 @@
       "yb_suffix_version": 1
     },
     {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 6,
+      "sha1_prefix": "9b881774",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v17.0.6-yb-1-1720465672-9b881774-almalinux8-aarch64",
+      "timestamp": "1720465672",
+      "version": "17.0.6",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "x86_64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 17,
@@ -3711,6 +3725,20 @@
       "yb_suffix_version": 1
     },
     {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 6,
+      "sha1_prefix": "9b881774",
+      "short_os_name_and_version": "almalinux9",
+      "tag": "v17.0.6-yb-1-1720474721-9b881774-almalinux9-aarch64",
+      "timestamp": "1720474721",
+      "version": "17.0.6",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "x86_64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 17,
@@ -3846,6 +3874,20 @@
       "short_os_name_and_version": "amzn2",
       "tag": "v17.0.6-yb-1-1714076298-9b881774-amzn2-aarch64",
       "timestamp": "1714076298",
+      "version": "17.0.6",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 6,
+      "sha1_prefix": "9b881774",
+      "short_os_name_and_version": "amzn2",
+      "tag": "v17.0.6-yb-1-1720492872-9b881774-amzn2-aarch64",
+      "timestamp": "1720492872",
       "version": "17.0.6",
       "version_suffix": "yb-1",
       "yb_suffix_version": 1
@@ -4294,6 +4336,20 @@
       "short_os_name_and_version": "ubuntu22.04",
       "tag": "v17.0.6-yb-1-1702630300-9b881774-ubuntu22.04-aarch64",
       "timestamp": "1702630300",
+      "version": "17.0.6",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 17,
+      "minor_version": 0,
+      "patch_version": 6,
+      "sha1_prefix": "9b881774",
+      "short_os_name_and_version": "ubuntu22.04",
+      "tag": "v17.0.6-yb-1-1720483848-9b881774-ubuntu22.04-aarch64",
+      "timestamp": "1720483848",
       "version": "17.0.6",
       "version_suffix": "yb-1",
       "yb_suffix_version": 1
