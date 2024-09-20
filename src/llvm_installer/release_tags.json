@@ -5193,6 +5193,76 @@
       "version": "18.1.8",
       "version_suffix": "yb-1",
       "yb_suffix_version": 1
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 19,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "a2a6b655",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v19.1.0-yb-1-1726858152-a2a6b655-almalinux8-x86_64",
+      "timestamp": "1726858152",
+      "version": "19.1.0",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 19,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "a2a6b655",
+      "short_os_name_and_version": "almalinux9",
+      "tag": "v19.1.0-yb-1-1726861363-a2a6b655-almalinux9-x86_64",
+      "timestamp": "1726861363",
+      "version": "19.1.0",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 19,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "a2a6b655",
+      "short_os_name_and_version": "amzn2",
+      "tag": "v19.1.0-yb-1-1726864950-a2a6b655-amzn2-x86_64",
+      "timestamp": "1726864950",
+      "version": "19.1.0",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 19,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "a2a6b655",
+      "short_os_name_and_version": "ubuntu22.04",
+      "tag": "v19.1.0-yb-1-1726868338-a2a6b655-ubuntu22.04-x86_64",
+      "timestamp": "1726868338",
+      "version": "19.1.0",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 19,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "a2a6b655",
+      "short_os_name_and_version": "ubuntu24.04",
+      "tag": "v19.1.0-yb-1-1726871609-a2a6b655-ubuntu24.04-x86_64",
+      "timestamp": "1726871609",
+      "version": "19.1.0",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
     }
   ]
 }
