@@ -5223,6 +5223,20 @@
       "yb_suffix_version": 1
     },
     {
+      "architecture": "aarch64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 19,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "a2a6b655",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v19.1.0-yb-1-1738336307-a2a6b655-almalinux8-aarch64",
+      "timestamp": "1738336307",
+      "version": "19.1.0",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
       "architecture": "x86_64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 19,
@@ -5260,6 +5274,34 @@
       "short_os_name_and_version": "amzn2",
       "tag": "v19.1.0-yb-1-1726864950-a2a6b655-amzn2-x86_64",
       "timestamp": "1726864950",
+      "version": "19.1.0",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "arm64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 19,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "a2a6b655",
+      "short_os_name_and_version": "macos",
+      "tag": "v19.1.0-yb-1-1738381768-a2a6b655-macos-arm64",
+      "timestamp": "1738381768",
+      "version": "19.1.0",
+      "version_suffix": "yb-1",
+      "yb_suffix_version": 1
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 19,
+      "minor_version": 1,
+      "patch_version": 0,
+      "sha1_prefix": "a2a6b655",
+      "short_os_name_and_version": "macos",
+      "tag": "v19.1.0-yb-1-1738383009-a2a6b655-macos-x86_64",
+      "timestamp": "1738383009",
       "version": "19.1.0",
       "version_suffix": "yb-1",
       "yb_suffix_version": 1
