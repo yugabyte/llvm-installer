@@ -16,29 +16,22 @@ import os
 import logging
 import json
 
-from llvm_installer import LlvmInstaller, ParsedTag, TagParsingError, get_release_tags_file_path
+from llvm_installer import \
+        GccInstaller, LlvmInstaller, ParsedTag, TagParsingError, ToolchainInstaller, \
+        get_release_tags_file_path
 
 from github import Github, GithubException
 from github.GitRelease import GitRelease
 
 
-def main() -> None:
-    github_token_file_path = os.path.expanduser('~/.github-token')
-    github_token = os.getenv('GITHUB_TOKEN')
-    if not github_token and os.path.exists(github_token_file_path):
-        with open(github_token_file_path) as github_token_file:
-            github_token = github_token_file.read().strip()
-
-    github_client = Github(login_or_token=github_token)
-    repo = github_client.get_repo('yugabyte/build-clang')
-    installer = LlvmInstaller()
+def fetch_releases(github_client: Github, installer: ToolchainInstaller, repo_url: str,
+                   output_path: str) -> None:
+    repo = github_client.get_repo(repo_url)
     valid_tags = []
-    output_path = get_release_tags_file_path()
     if not os.path.isdir(os.path.dirname(output_path)):
         raise IOError(f"Directory of the output file {output_path} does not exist")
 
     for release in repo.get_releases():
-
         tag_name = release.tag_name
         url_for_tag = installer.get_url_for_tag(tag_name)
 
@@ -68,6 +61,22 @@ def main() -> None:
     with open(output_path, 'w') as output_file:
         output_file.write(json.dumps(json_data, sort_keys=True, indent=2) + '\n')
     logging.info(f"Wrote {len(valid_tags)} releases to file: {output_path}")
+
+
+def main() -> None:
+    github_token_file_path = os.path.expanduser('~/.github-token')
+    github_token = os.getenv('GITHUB_TOKEN')
+    if not github_token and os.path.exists(github_token_file_path):
+        with open(github_token_file_path) as github_token_file:
+            github_token = github_token_file.read().strip()
+
+    github_client = Github(login_or_token=github_token)
+    fetch_releases(
+        github_client, LlvmInstaller(), 'yugabyte/build-clang',
+        get_release_tags_file_path(is_gcc=False))
+    fetch_releases(
+        github_client, GccInstaller(), 'yugabyte/build_gcc',
+        get_release_tags_file_path(is_gcc=True))
 
 
 if __name__ == '__main__':

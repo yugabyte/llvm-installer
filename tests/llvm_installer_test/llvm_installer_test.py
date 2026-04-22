@@ -13,13 +13,10 @@
 import os
 import unittest
 
-from llvm_installer import LlvmPackageCollection, LlvmInstaller
+from llvm_installer import GccInstaller, LlvmInstaller
 
 
 class LlvmInstallerTest(unittest.TestCase):
-    def test_package_collection(self) -> None:
-        pkg_collection = LlvmPackageCollection.get_instance()
-
     def test_get_url(self) -> None:
         for major_llvm_version in [12, 13, 14]:
             for short_os_name_and_version in ['centos7', 'almalinux8', 'amzn2', 'centos8']:
@@ -31,5 +28,14 @@ class LlvmInstallerTest(unittest.TestCase):
                     installer = LlvmInstaller(
                         short_os_name_and_version=short_os_name_and_version,
                         architecture=architecture)
-                    llvm_url = installer.get_llvm_url(major_llvm_version=major_llvm_version)
+                    llvm_url = installer.get_url(major_version=major_llvm_version)
+                    # TODO: try to download the URL.
+
+        for major_version in [12, 13, 14, 15]:
+            for short_os_name_and_version in ['almalinux8', 'almalinux9', 'ubuntu22.04']:
+                for architecture in ['x86_64', 'aarch64']:
+                    gcc_installer = GccInstaller(
+                        short_os_name_and_version=short_os_name_and_version,
+                        architecture=architecture)
+                    gcc_url = gcc_installer.get_url(major_version=major_version)
                     # TODO: try to download the URL.

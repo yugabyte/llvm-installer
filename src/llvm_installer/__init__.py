@@ -27,8 +27,10 @@ from typing import Optional, List, Union, Sequence, Tuple, Dict
 
 ARCH_RE_STR = '|'.join(['x86_64', 'aarch64', 'arm64'])
 
-DEFAULT_GITHUB_RELEASE_URL_PREFIX = 'https://github.com/yugabyte/build-clang/releases/download'
-DEFAULT_PACKAGE_NAME_PREFIX = 'yb-llvm-'
+DEFAULT_LLVM_GITHUB_RELEASE_URL_PREFIX = 'https://github.com/yugabyte/build-clang/releases/download'
+DEFAULT_LLVM_PACKAGE_NAME_PREFIX = 'yb-llvm-'
+DEFAULT_GCC_GITHUB_RELEASE_URL_PREFIX = 'https://github.com/yugabyte/build_gcc/releases/download'
+DEFAULT_GCC_PACKAGE_NAME_PREFIX = 'yb-gcc-'
 DEFAULT_PACKAGE_NAME_SUFFIX = '.tar.gz'
 
 TAG_RE_WITHOUT_OS_AND_ARCH_COMPONENTS = [
@@ -62,8 +64,10 @@ DEFAULT_SHORT_OS_NAME_AND_VERSION_FOR_OLD_BUILDS = 'centos7'
 DEFAULT_ARCHITECTURE_FOR_OLD_BUILDS = 'x86_64'
 
 
-def get_release_tags_file_path() -> str:
-    return os.path.join(os.path.dirname(os.path.abspath(__file__)), 'release_tags.json')
+def get_release_tags_file_path(is_gcc: bool) -> str:
+    return os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        ('gcc_release_tags.json' if is_gcc else 'release_tags.json'))
 
 
 class TagParsingError(Exception):
@@ -187,10 +191,11 @@ class ParsedTag:
         )
 
 
-class LlvmPackageCollection:
+class PackageCollection:
     parsed_tags: List[ParsedTag]
 
-    _instance: Optional['LlvmPackageCollection'] = None
+    _llvm_instance: Optional['PackageCollection'] = None
+    _gcc_instance: Optional['PackageCollection'] = None
 
     def __init__(self, tags: Sequence[Union[str, ParsedTag]]):
         self.parsed_tags = [
@@ -199,25 +204,29 @@ class LlvmPackageCollection:
         ]
 
     @classmethod
-    def get_instance(self) -> 'LlvmPackageCollection':
-        if not LlvmPackageCollection._instance:
-            with open(get_release_tags_file_path()) as release_tags_file:
+    def get_instance(self, is_gcc: bool) -> 'PackageCollection':
+        instance = PackageCollection._gcc_instance if is_gcc else PackageCollection._llvm_instance
+        if not instance:
+            with open(get_release_tags_file_path(is_gcc)) as release_tags_file:
                 json_data = json.load(release_tags_file)
                 parsed_tags: List[ParsedTag] = []
                 for json_data_for_tag in json_data['parsed_tags']:
                     parsed_tag = ParsedTag.from_dict(json_data_for_tag)
                     parsed_tags.append(parsed_tag)
-            LlvmPackageCollection._instance = LlvmPackageCollection(parsed_tags)
-        return LlvmPackageCollection._instance
+            if is_gcc:
+                instance = PackageCollection._gcc_instance = PackageCollection(parsed_tags)
+            else:
+                instance = PackageCollection._llvm_instance = PackageCollection(parsed_tags)
+        return instance
 
     def filter(
             self,
-            major_llvm_version: int,
+            major_version: int,
             short_os_name_and_version: str,
-            architecture: str) -> 'LlvmPackageCollection':
-        return LlvmPackageCollection([
+            architecture: str) -> 'PackageCollection':
+        return PackageCollection([
             parsed_tag for parsed_tag in self.parsed_tags
-            if parsed_tag.version.startswith(str(major_llvm_version) + '.') and
+            if parsed_tag.version.startswith(str(major_version) + '.') and
             is_compatible_os(
                 parsed_tag.short_os_name_and_version,
                 short_os_name_and_version) and
@@ -236,7 +245,8 @@ class LlvmPackageCollection:
     __repr__ = __str__
 
 
-class LlvmInstaller:
+class ToolchainInstaller:
+    toolchain_name: str
     architecture: str
     short_os_name_and_version: str
     github_release_url_prefix: str
@@ -245,23 +255,25 @@ class LlvmInstaller:
 
     def __init__(
             self,
+            toolchain_name: str,
+            github_release_url_prefix: str,
+            package_name_prefix: str,
             short_os_name_and_version: Optional[str] = None,
             architecture: Optional[str] = None,
-            github_release_url_prefix: Optional[str] = None,
-            package_name_prefix: Optional[str] = None,
             package_name_suffix: Optional[str] = None) -> None:
+
+        self.toolchain_name = toolchain_name
 
         self.short_os_name_and_version = (
             short_os_name_and_version or local_sys_conf().short_os_name_and_version()
         )
         self.architecture = architecture or local_sys_conf().architecture
 
-        self.github_release_url_prefix = (
-            github_release_url_prefix or DEFAULT_GITHUB_RELEASE_URL_PREFIX)
+        self.github_release_url_prefix = github_release_url_prefix
         if self.github_release_url_prefix.endswith('/'):
             self.github_release_url_prefix = self.github_release_url_prefix[:-1]
 
-        self.package_name_prefix = package_name_prefix or DEFAULT_PACKAGE_NAME_PREFIX
+        self.package_name_prefix = package_name_prefix
         self.package_name_suffix = package_name_suffix or DEFAULT_PACKAGE_NAME_SUFFIX
 
     def get_url_for_tag(self, tag: str) -> str:
@@ -275,20 +287,21 @@ class LlvmInstaller:
             self.package_name_suffix
         ])
 
-    def get_parsed_tag(self, major_llvm_version: int) -> ParsedTag:
-        packages = LlvmPackageCollection.get_instance()
-        filtered_packages: LlvmPackageCollection = packages.filter(
-            major_llvm_version=major_llvm_version,
+    def get_parsed_tag(self, major_version: int) -> ParsedTag:
+        packages = PackageCollection.get_instance(self.toolchain_name == 'GCC')
+        filtered_packages: PackageCollection = packages.filter(
+            major_version=major_version,
             short_os_name_and_version=self.short_os_name_and_version,
             architecture=self.architecture)
         selection_criteria_str = ", ".join([
-            f"major LLVM version {major_llvm_version}",
+            f"major {self.toolchain_name} version {major_version}",
             f"OS/version {self.short_os_name_and_version}",
             f"architecture {self.architecture}",
         ])
         parsed_tags = filtered_packages.parsed_tags
         if not parsed_tags:
-            error_msg = f"Could not find an LLVM release for {selection_criteria_str}"
+            error_msg = \
+                f"Could not find a(n) {self.toolchain_name} release for {selection_criteria_str}"
             logging.warning(error_msg + ". Available packages:\n" + packages.one_per_line_str())
             raise ValueError(error_msg)
 
@@ -308,6 +321,45 @@ class LlvmInstaller:
             f"highest version tuple ({max_version_tuple}): " +
             "\n".join([str(p) for p in filtered_packages.parsed_tags]))
 
+    def get_url(self, major_version: int) -> str:
+        return self.get_url_for_tag(self.get_parsed_tag(major_version=major_version).tag)
+
+
+class LlvmInstaller(ToolchainInstaller):
+    def __init__(
+            self,
+            short_os_name_and_version: Optional[str] = None,
+            architecture: Optional[str] = None,
+            github_release_url_prefix: Optional[str] = None,
+            package_name_prefix: Optional[str] = None,
+            package_name_suffix: Optional[str] = None) -> None:
+        super().__init__(
+            toolchain_name='LLVM',
+            github_release_url_prefix=(
+                github_release_url_prefix or DEFAULT_LLVM_GITHUB_RELEASE_URL_PREFIX),
+            package_name_prefix=package_name_prefix or DEFAULT_LLVM_PACKAGE_NAME_PREFIX,
+            short_os_name_and_version=short_os_name_and_version,
+            architecture=architecture,
+            package_name_suffix=package_name_suffix)
+
+    # For backwards compatibility.
     def get_llvm_url(self, major_llvm_version: int) -> str:
-        return self.get_url_for_tag(
-            self.get_parsed_tag(major_llvm_version=major_llvm_version).tag)
+        return self.get_url(major_llvm_version)
+
+
+class GccInstaller(ToolchainInstaller):
+    def __init__(
+            self,
+            short_os_name_and_version: Optional[str] = None,
+            architecture: Optional[str] = None,
+            github_release_url_prefix: Optional[str] = None,
+            package_name_prefix: Optional[str] = None,
+            package_name_suffix: Optional[str] = None) -> None:
+        super().__init__(
+            toolchain_name='GCC',
+            github_release_url_prefix=(
+                github_release_url_prefix or DEFAULT_GCC_GITHUB_RELEASE_URL_PREFIX),
+            package_name_prefix=package_name_prefix or DEFAULT_GCC_PACKAGE_NAME_PREFIX,
+            short_os_name_and_version=short_os_name_and_version,
+            architecture=architecture,
+            package_name_suffix=package_name_suffix)
