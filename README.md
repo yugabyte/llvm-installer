@@ -2,7 +2,7 @@
 
 https://pypi.org/project/llvm-installer/
 
-Helps installing pre-built LLVM packages for various operating systems.
+Helps installing pre-built LLVM and GCC packages for various operating systems.
 
 ## Usage as module
 

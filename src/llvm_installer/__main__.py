@@ -26,39 +26,40 @@ import time
 from downloadutil.download_config import DownloadConfig  # type: ignore
 from downloadutil.downloader import Downloader  # type: ignore
 
-from llvm_installer import LlvmInstaller
+from llvm_installer import LlvmInstaller, GccInstaller
 from sys_detection import local_sys_conf
 
 from typing import Optional
 
 
-def install(llvm_url: str, once: bool, verbose: bool) -> None:
-    archive_name = os.path.basename(llvm_url)
+def install(toolchain_name: str, toolchain_url: str, once: bool, verbose: bool) -> None:
+    archive_name = os.path.basename(toolchain_url)
     install_dir_name = None
     for extension in ['.zip', '.tar.gz']:
         if archive_name.endswith(extension):
             install_dir_name = archive_name[:-len(extension)]
             break
     if not install_dir_name:
-        raise ValueError("Could not determine installation directory name from URL %s" % llvm_url)
+        raise ValueError(
+            "Could not determine installation directory name from URL %s" % toolchain_url)
 
-    install_parent_dir = '/opt/yb-build/llvm'
+    install_parent_dir = '/opt/yb-build/%s' % toolchain_name
     install_dir = os.path.join(install_parent_dir, install_dir_name)
 
     # We create a "flag file" to indicate that the installation has successfuly completed. Another
     # approach would have been to extract to a temporary directory and then try to atomically move
     # it into place. That would require a bit more error handling.
-    flag_file_path = os.path.join(install_dir, '.llvm_installation_finished')
+    flag_file_path = os.path.join(install_dir, '.%s_installation_finished' % toolchain_name)
     if once and os.path.exists(flag_file_path):
-        logging.info("LLVM is already installed in %s" % install_dir)
+        logging.info("Toolchain is already installed in %s" % install_dir)
         return
 
     start_time_sec = time.time()
     config = DownloadConfig(verbose=verbose)
     downloader = Downloader(config=config)
-    logging.info("Downloading %s", llvm_url)
+    logging.info("Downloading %s", toolchain_url)
     downloaded_path = downloader.download_url(
-        llvm_url,
+        toolchain_url,
         verify_checksum=True,
         download_parent_dir_path=install_parent_dir)
     download_time_sec = time.time() - start_time_sec
@@ -89,13 +90,17 @@ def main() -> None:
         prog='llvm-installer',
         description=__doc__)
     arg_parser.add_argument(
-        '--llvm-major-version', '--major-version',
-        help='LLVM major version')
+        '--major-version', '--llvm-major-version',
+        help='Toolchain major version')
     arg_parser.add_argument(
         '--print-url',
         action='store_true',
-        help='If this is specified, LLVM package download URL is printed to standard output. '
+        help='If this is specified, package download URL is printed to standard output. '
              'Please use the print-url command instead of this flag.')
+    arg_parser.add_argument(
+        '--gcc',
+        action='store_true',
+        help='Get GCC packages instead of LLVM.')
     arg_parser.add_argument(
         '--verbose',
         action='store_true',
@@ -105,17 +110,17 @@ def main() -> None:
 
     install_subparser = subparsers.add_parser(
         "install",
-        help="Install a particular version of LLVM. Note that currently this is not safe in case "
+        help="Install a particular version. Note that currently this is not safe in case "
              "multiple concurrent processes are trying to install the same version.")
     install_subparser.add_argument(
         '--once',
         action='store_true',
-        help="Only install the given version of LLVM once. If it has already been installed, "
+        help="Only install the given version once. If it has already been installed, "
              "do not install it again.")
 
     subparsers.add_parser(
         "print-url",
-        help="Print the download URL of the chosen LLVM version")
+        help="Print the download URL of the chosen version")
 
     if len(sys.argv) == 1:
         arg_parser.print_help(sys.stderr)
@@ -126,7 +131,7 @@ def main() -> None:
 
     sys_conf = local_sys_conf()
     short_os_name_and_version = sys_conf.short_os_name_and_version()
-    installer = LlvmInstaller(
+    installer = (GccInstaller if args.gcc else LlvmInstaller)(
         short_os_name_and_version=short_os_name_and_version,
         architecture=sys_conf.architecture)
 
@@ -135,16 +140,16 @@ def main() -> None:
     should_install = command == 'install'
 
     if should_print_url or should_install:
-        if not args.llvm_major_version:
-            raise ValueError("--llvm-major-version not specified\n")
-        llvm_url = installer.get_llvm_url(major_llvm_version=args.llvm_major_version)
+        if not args.major_version:
+            raise ValueError("--major-version not specified\n")
+        toolchain_url = installer.get_url(major_version=args.major_version)
 
     if should_print_url:
-        print(llvm_url)
+        print(toolchain_url)
         return
 
     if should_install:
-        install(llvm_url, once=args.once, verbose=args.verbose)
+        install('gcc' if args.gcc else 'llvm', toolchain_url, once=args.once, verbose=args.verbose)
 
 
 if __name__ == '__main__':
