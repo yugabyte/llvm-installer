@@ -25,14 +25,14 @@ if __name__ == '__main__':
 
     setup(
         name='llvm-installer',
-        version='1.5.0',
+        version='1.5.1',
         url='https://github.com/yugabyte/llvm-installer',
         author='Mikhail Bautin',
         author_email='mbautin@users.noreply.github.com',
         description='Allows installing pre-built LLVM packages for various operating systems',
         packages=find_packages(where='src'),
         package_dir={"": "src"},
-        package_data={'llvm_installer': ['py.typed', 'release_tags.json']},
+        package_data={'llvm_installer': ['py.typed', 'release_tags.json', 'gcc_release_tags.json']},
         install_requires=[
             'packaging',
             'sys-detection',
