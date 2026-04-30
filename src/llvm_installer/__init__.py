@@ -29,7 +29,7 @@ ARCH_RE_STR = '|'.join(['x86_64', 'aarch64', 'arm64'])
 
 DEFAULT_LLVM_GITHUB_RELEASE_URL_PREFIX = 'https://github.com/yugabyte/build-clang/releases/download'
 DEFAULT_LLVM_PACKAGE_NAME_PREFIX = 'yb-llvm-'
-DEFAULT_GCC_GITHUB_RELEASE_URL_PREFIX = 'https://github.com/yugabyte/build_gcc/releases/download'
+DEFAULT_GCC_GITHUB_RELEASE_URL_PREFIX = 'https://github.com/yugabyte/build-gcc/releases/download'
 DEFAULT_GCC_PACKAGE_NAME_PREFIX = 'yb-gcc-'
 DEFAULT_PACKAGE_NAME_SUFFIX = '.tar.gz'
 
