@@ -365,6 +365,20 @@
       "yb_suffix_version": null
     },
     {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 2,
+      "patch_version": 0,
+      "sha1_prefix": "5115c7e4",
+      "short_os_name_and_version": "almalinux8",
+      "tag": "v15.2.0-1777582916-5115c7e4-almalinux8-x86_64",
+      "timestamp": "1777582916",
+      "version": "15.2.0",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
       "architecture": "aarch64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 15,
@@ -388,6 +402,20 @@
       "short_os_name_and_version": "almalinux9",
       "tag": "v15.2.0-1771919266-5115c7e4-almalinux9-x86_64",
       "timestamp": "1771919266",
+      "version": "15.2.0",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 2,
+      "patch_version": 0,
+      "sha1_prefix": "5115c7e4",
+      "short_os_name_and_version": "almalinux9",
+      "tag": "v15.2.0-1777585755-5115c7e4-almalinux9-x86_64",
+      "timestamp": "1777585755",
       "version": "15.2.0",
       "version_suffix": null,
       "yb_suffix_version": null
@@ -421,6 +449,20 @@
       "yb_suffix_version": null
     },
     {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 2,
+      "patch_version": 0,
+      "sha1_prefix": "5115c7e4",
+      "short_os_name_and_version": "ubuntu22.04",
+      "tag": "v15.2.0-1777588717-5115c7e4-ubuntu22.04-x86_64",
+      "timestamp": "1777588717",
+      "version": "15.2.0",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
       "architecture": "aarch64",
       "is_old_tag_without_os_and_arch": false,
       "major_version": 15,
@@ -444,6 +486,20 @@
       "short_os_name_and_version": "ubuntu24.04",
       "tag": "v15.2.0-1771925424-5115c7e4-ubuntu24.04-x86_64",
       "timestamp": "1771925424",
+      "version": "15.2.0",
+      "version_suffix": null,
+      "yb_suffix_version": null
+    },
+    {
+      "architecture": "x86_64",
+      "is_old_tag_without_os_and_arch": false,
+      "major_version": 15,
+      "minor_version": 2,
+      "patch_version": 0,
+      "sha1_prefix": "5115c7e4",
+      "short_os_name_and_version": "ubuntu24.04",
+      "tag": "v15.2.0-1777590842-5115c7e4-ubuntu24.04-x86_64",
+      "timestamp": "1777590842",
       "version": "15.2.0",
       "version_suffix": null,
       "yb_suffix_version": null
